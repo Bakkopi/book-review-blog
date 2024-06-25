@@ -1,4 +1,4 @@
-# Booklüb - A Book Review Blog App
+# Booklüb — A Book Review App
 
 ## Overview
 Welcome to Booklüb! A book review blog built with Express on NodeJS. Full-stack project incorporating vanilla EJS templating, CSS styling, and jQuery.
