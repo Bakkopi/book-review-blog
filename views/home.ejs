@@ -1,0 +1,35 @@
+<%- include('partials/header.ejs') -%>
+
+<main>
+  <form method="post" action="/filter" id="book-filter">
+    <label for="select-sort">Sort:  </label>
+    <select id="select-sort" name="sortBy">
+      <option value="date_updated" <%= (sortBy == "date_updated") ? "selected": "" %>>Date</option>
+      <option value="rating" <%= (sortBy == "rating") ? "selected": "" %>>Rating</option>
+    </select>
+  </form>
+  <div class="book-container">
+    <% if (books) { %>
+      <% books.forEach(book => { %>
+        <div class="book-card">
+          <div class="book-card-header">
+            <div class="book-card-img">
+              <a href="/view/<%= book.id %>">
+                <img id="" class="book-cover-img" src="<%= book.cover_img %>"></img>
+              </a>
+            </div>
+            <h2 class="book-card-title"><%= book.title %></h2>
+          </div>
+          <div class="book-card-details">
+            <p>Rating: <%= "🌕".repeat(Math.floor(parseFloat(book.rating) / 2)) + ((parseFloat(book.rating) % 2 != 0) ? "🌗" : "") %></p>
+            <p><%= book.date_updated_str %></p>
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
+  </div>
+</main>
+
+<script src="/js/home.js"></script>
+
+<%- include('partials/footer.ejs') -%>

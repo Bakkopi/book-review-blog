@@ -1,0 +1,302 @@
+
+* {
+    font-family:  'JetBrains Mono', 'Courier New', Courier, monospace;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #f9f7f4;
+}
+
+main {
+    margin-top: 90px;
+    padding: 20px 5vw;
+}
+
+
+/* --- NAV BAR LAYOUT --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 60px;
+    z-index: 10;
+    padding: 10px 5vw;
+    background-color: #f4f1ea;
+    box-shadow: 3px 3px #d8d8d8;
+}
+
+nav * {
+    color: rgb(28, 28, 28);
+}
+
+.nav-brand {
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+}
+
+.nav-list > li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-list button {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    transition: all 0.1s linear;
+}
+
+.nav-list button.active {
+    color: white;
+    background-color: #2a6247;
+}
+
+.nav-list button:hover {
+    box-shadow: 0 3px #d8d8d8;
+    background-color: #b6b6b6;
+    color: white;
+}
+
+#book-filter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    margin: 10px auto;
+}
+
+#book-filter > select {
+    width: 200px;
+    height: 100%;
+    margin-left: 20px;
+    padding: 0 10px;
+    border-radius: 20px;
+}
+
+/* --- CARD LAYOUT --- */
+.book-container {
+    display: flex;
+    flex-flow: row wrap;
+    /* justify-content: space-between; */
+    justify-content: center;
+    gap: 20px 35px;
+    align-items: start;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 420px;
+    flex: 0 0 250px;
+    max-width: 250px;
+    margin-top: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px #d8d8d8 solid;
+    background-color: rgb(250, 250, 250);
+    transition: all 0.3s ease-in-out;
+    /* box-shadow: 3px 3px #d8d8d8; */
+}
+
+.book-card-title {
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.book-card-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.book-card-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book-card-details p {
+    font-size: 0.8rem;
+}
+
+.book-cover-img {
+    border-radius: 10px;
+    box-shadow: 2px 2px rgba(134, 140, 155, 0.71);
+    transition: all 0.2s ease-in-out;
+    width: 180px;
+    height: 275px;
+    object-fit: cover;
+}
+
+.book-cover-img:hover {
+    scale: 1.05;
+    rotate: -3deg;
+    box-shadow: 4px 4px #868c9bb5;
+}
+
+/* --- NEW BOOK --- */
+
+#crud-main {
+    display: grid;
+    grid: auto / 1fr 2fr;
+    gap: 30px;
+    margin: 0 15vw;
+    padding: 20px;
+    border: 2px #d8d8d8 solid;
+    border-radius: 20px;
+    box-shadow: 2px 2px #2a6247;
+    background-color: #f4f1ea;
+    position: relative;
+}
+
+#crud-main label {
+    font-size: 0.8rem;
+    font-style: italic;
+    display: block;
+    margin-top: 8px;
+}
+
+#crud-form input, textarea {
+    width: 80%;
+    border-radius: 5px;
+    border: 1px #868c9bb5 solid;
+    margin-top: 10px;
+    padding: 10px 10px;
+}
+
+#crud-form > fieldset {
+    border: none;
+    margin-bottom: 20px;
+    padding: 0;
+    /* white-space: nowrap; */
+}
+
+#crud-form label {
+    display: block;
+}
+
+#crud-main hr {
+    margin-bottom: 20px;
+}
+
+#review-input {
+    height: fit-content;
+    min-height: 100px;
+}
+
+
+#crud-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#crud-cover-img {
+    border-radius: 10px;
+    box-shadow: 2px 2px rgba(134, 140, 155, 0.71);
+    transition: all 0.2s ease-in-out;
+    width: 196px;
+    height: 300px;
+    object-fit: cover;
+}
+
+#search-img-btn {
+    margin-top: 15px;
+    background-color: #2a4c62;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.crud-img-dir {
+    border-radius: 20px;
+    border: 1px gray solid;
+    padding: 5px 10px;
+}
+
+#crud-img-btnset {
+    margin-top: 15px;
+}
+
+.crud-btn {
+    border-radius: 20px;
+    border: 1px gray solid;
+    padding: 5px 10px;
+    box-shadow: 2px 2px #d8d8d8;
+    transition: all 0.1s linear;
+}
+
+.crud-btn:hover {
+    box-shadow: 3px 3px #cdcdcd;
+}
+
+#delete-btn-input {
+    background-color: #a92d2d;
+    color: white;
+}
+
+#submit-btn-input {
+    background-color: #2a6247;
+    color: white;
+}
+
+#crud-edit-btn {
+    position: absolute;
+    text-decoration: none;
+    top: 20px;
+    right:20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 100%;
+    background-color: #607583;
+    border: 2px #2a4c62 solid;
+}
+
+#crud-edit-btn > img {
+    height: 23px;
+    color: white;
+}
+
+#crud-btn-set {
+    display: flex;
+    gap: 20px;
+}
+
+#crud-btn-set button {
+    width: 90px;
+}
+
+
+@media (max-width: 720px) {
+    .book-container {
+        justify-content: center;
+    }
+
+    #crud-main {
+        display: grid;
+        grid: auto auto / auto;
+        gap: 30px;
+        margin: 0 15vw;
+        padding: 20px;
+    }
+}
+
+/* @media (min-width: 901px) and (max-width: 1300px) {
+    .book-container {
+        justify-content: space-around;
+    }
+} */

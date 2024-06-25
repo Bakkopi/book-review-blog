@@ -1,0 +1,86 @@
+<%- include('partials/header.ejs') -%>
+
+<main>
+    <div id="crud-main">
+        <% if (mode == "view") {  %>
+            <a id="crud-edit-btn" class="crud-btn" href=<%= `/edit/${bookId}` %>> 
+                <img src="/assets/pen.svg" alt="Edit icon">
+            </a>
+        <% }%>
+
+        <div id="crud-image">
+            <img src=<%= (mode == "new") ? "/assets/no-image.png" : selected.cover_img %> id="crud-cover-img">
+            <% if (mode == "new" || mode == "edit" ) { %>
+            <div id="crud-img-btnset">
+                <button id="crud-img-prev" class="crud-btn" disabled>&lt;</button>
+                <button id="crud-img-next" class="crud-btn" disabled>&gt;</button>
+            </div>
+            <button id="search-img-btn" class="crud-btn">Search Image 📸</button>
+            <% } %>
+        </div>
+
+        <% if (mode == "new" || mode == "edit" ) { %>
+            <% let isEdit = (mode == "edit") ? true : false %>
+            <form id="crud-form" action=<%= (isEdit) ? `/edit/${bookId}` : "/new" %> method="post">
+                <div>
+                    <h1><%= (isEdit) ? "Edit" : "New" %> </h1>
+                    <hr>
+                </div>
+                <fieldset>
+                    <legend></legend>
+                    <div>
+                        <label for="title-input">Title</label>
+                        <input type="text" name="title" id="title-input"  <%- (isEdit) ? `value="${selected.title}"` :"" %> required>
+                    </div>
+                    <div>
+                        <label for="author-input">Author</label>
+                        <input type="text" name="author" id="author-input"  <%- (isEdit) ? `value="${selected.author}"` :"" %> required>
+                    </div>
+                    <div>
+                        <label for="rating-input">Rating</label>
+                        <input type="number" name="rating" id="rating-input" min="0" max="10" step="1" <%- (isEdit) ? `value=${selected.rating}` :"" %> required>
+                    </div>
+                    <div>
+                        <label for="review-input">Review</label>
+                        <textarea name="review" id="review-input" required><%- (isEdit) ? selected.review:"" %></textarea>
+                    </div>
+                </fieldset>
+                <input type="hidden" id="img-url-input" name="imgUrl" value=<%= (isEdit) ? selected.cover_img : "/assets/no-image.png" %>>
+                <div id="crud-btn-set">
+                    <% if (mode == "edit") { %>
+                        <form action="/" method="get">
+                            <button type="submit" id="cancel-btn-input" class="crud-btn">Cancel</button>
+                        </form>
+                        <form id="delete-post-form" action= <%= `/delete/${selected.id}` %> method="post">
+                            <button type="button" id="delete-btn-input" class="crud-btn">Delete</button>
+                        </form>
+                    <% } %>
+                    <button type="submit" id="submit-btn-input" class="crud-btn">Submit</button>
+                </div>
+
+            </form>
+        <% } else if (mode == "view") { %>
+            <div>
+                <div>
+                    <h1><%= selected.title %></h1>
+                    <h4><%= selected.author %></h4>
+                    <hr>
+                </div>
+                <div>
+                    <div>
+                        <label for="rating-input">Rating</label>
+                        <p id="rating-input"><%= "🌕".repeat(Math.floor(parseFloat(selected.rating) / 2)) + ((parseFloat(selected.rating) % 2 != 0) ? "🌗" : "") %></p>
+                    </div>
+                    <div>
+                        <label for="review-input">Review</label>
+                        <p id="review-input"><%= selected.review %></p>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+<script src="/js/crud.js"></script>
+
+<%- include('partials/footer.ejs') -%>
